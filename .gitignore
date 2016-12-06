@@ -31,6 +31,9 @@ build/Release
 node_modules
 jspm_packages
 
+#VirtualBox
+.vagrant
+
 # Optional npm cache directory
 .npm
 
