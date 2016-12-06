@@ -59,9 +59,7 @@ A step by step series of steps that will have you install the appropriate envior
     ```
     sudo apt-get install mysql-server -y
     ```
-Wait until this screen come up and enter your root password, I will put '123456' without quotes then press 'OK' or hit Enter from keyboard and re-enter the password for confirmation.
-
-![Alt text](https://s16.postimg.org/rqu0ujl39/mysql_0.png "Set Root Password")
+Wait until this screen come up and enter your root password, I will put '123456' without quotes then press 'OK' or hit Enter from keyboard and re-enter the password for confirmation. ![Alt text](https://s16.postimg.org/rqu0ujl39/mysql_0.png "Set Root Password")
 
 6. Lets edit /etc/mysql/my.cnf/ in order to allow connection from any server (DO THIS ONLY FOR DEVELOPMENT PURPOSES, FOR PRODUCTION YOU WILL HAVE TO EDIT EVEN FURTHER).
     I will edit it with nano editor but you can do it with whatever editor you like.
