@@ -1,5 +1,5 @@
 # Table of Content
----
+
 + [Description](#Description)
 + [Getting Started](#GettingStarted)
   * [Prerequisites](#Prerequisites)
@@ -14,6 +14,7 @@
 + [Authors](#Authors)
 + [License](#License)
 + [Acknowledgments](#Acknowledgments)
+
 ---
 # <a name="Description"></a>PeerTutor
 The idea for this application came about after noticing that many Hunter College students did not benefit from the tutoring services offered at the school.  Furthermore, through a survey we conducted last semester, we found that some students did not like the current tutoring system because of its inflexibility and lack of accessibility.  Also, since most young adults nowadays are accustomed to having everything available at their fingertips, we thought digitalizing the tutoring service system at the college would allow more students to easily seek and receive the help they need with their course materials.  The idea has a lot of resemblance with the Uber business model except that the tutors, in this case, would be funded by the school’s respective departments.
