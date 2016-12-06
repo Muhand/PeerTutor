@@ -33,9 +33,9 @@ A step by step series of steps that will have you install the appropriate envior
 1. Open Git Bash and navigate to a place where you want to clone this project
   1. Make folder for The Project
   2. Clone the project
-  ```
-  git clone https://github.com/Muhand/PeerTutor.git
-  ```
+    ```
+    git clone https://github.com/Muhand/PeerTutor.git
+    ```
   3. Change directory into the PeerTutor
   ```
   cd PeerTutor
