@@ -168,11 +168,10 @@ Then look for 'bind-address' and add '#' before it, now few lines before this lo
 13. Now we need to install our dependencies
     ```
     npm install
+    ```NOTE: if you are running windows that might give you some errors because there is a bug with symlinks so you might want to run the following command
     ```
-        NOTE: if you are running windows that might give you some errors because there is a bug with symlinks so you might want to run the following command
-        ```
-        npm install --no-bin-links
-        ```
+    npm install --no-bin-links
+    ```
 
 14. Now we need to update our database tables, and migrate it with our models
     ```
