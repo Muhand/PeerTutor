@@ -32,6 +32,7 @@ node_modules
 jspm_packages
 
 # Vagrant stuff
+*.vagrant
 acceptance_config.yml
 boxes/*
 /.vagrant
