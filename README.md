@@ -1,6 +1,6 @@
 |           Table of Content          |
 |      -------------------------------|
-| 1.[Description](#Running the tests) |
+| 1.[Description](#RunningTheTests) |
 | 2.[Description](##Running the tests)|
 | zebra stripes  are neat          $1 |
 
@@ -172,7 +172,7 @@ npm start
 End with an example of getting some data out of the system or using it for a little demo
 
 
-## (#Running the tests)
+## <a name="RunningTheTests"></a>Running the tests
 
 Explain how to run the automated tests for this system
 
