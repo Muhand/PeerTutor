@@ -2,8 +2,8 @@
 ---
 + [Description](#Description)
 + [Getting Started](#GettingStarted)
-..1. [Prerequisites](#Prerequisites)
-..2. [Installing](#Installing)
+⋅⋅* [Prerequisites](#Prerequisites)
+⋅⋅* [Installing](#Installing)
 + [Running the tests](#RunningTheTests)
 ..1. [Break down into end to end tests](#BreakDown)
 ..2. [And coding style tests](#CodeStyle)
