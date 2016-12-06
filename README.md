@@ -30,22 +30,32 @@ Give examples
 ## <a name="Installing"></a>Installing
 A step by step series of steps that will have you install the appropriate enviornment.
 
-1. Open Git Bash and navigate to the folder which you cloned the project to then go inside "www.peertutor.com"
+1. Open Git Bash and navigate to a place where you want to clone this project
+  1. Make folder for The Project
+  2. Clone the project
+  ```
+  git clone https://github.com/Muhand/PeerTutor.git
+  ```
+  3. Change directory into the PeerTutor
+  ```
+  cd PeerTutor
+  ```
+2. Now we need to setup our vagrant machine
 ```
-cd PeerTutor/www.peertutor.com/
+cd www.peertutor.com
 ```
 
-2. Run the vagrant machine and ssh into it
+3. Run the vagrant machine and ssh into it
 ```
 Vagrant up && vagrant ssh
 ```
 
-3. Update the machine
+4. Update the machine
 ```
 sudo apt-get update
 ```
 
-4. Install MySQL Server
+5. Install MySQL Server
 ```
 sudo apt-get install mysql-server -y
 ```
@@ -53,7 +63,7 @@ Wait until this screen come up and enter your root password, I will put '123456'
 
 ![Alt text](https://s16.postimg.org/rqu0ujl39/mysql_0.png "Set Root Password")
 
-5. Lets edit /etc/mysql/my.cnf/ in order to allow connection from any server (DO THIS ONLY FOR DEVELOPMENT PURPOSES, FOR PRODUCTION YOU WILL HAVE TO EDIT EVEN FURTHER).
+6. Lets edit /etc/mysql/my.cnf/ in order to allow connection from any server (DO THIS ONLY FOR DEVELOPMENT PURPOSES, FOR PRODUCTION YOU WILL HAVE TO EDIT EVEN FURTHER).
     I will edit it with nano editor but you can do it with whatever editor you like.
 ```
 sudo nano /etc/mysql/my.cnf
@@ -61,7 +71,7 @@ sudo nano /etc/mysql/my.cnf
 Then look for 'bind-address' and add '#' before it, now few lines before this look for 'skip-external-locking' and add '#' as well, this will comment these 2 lines which will will allow wildcard connections to the server.
     Your file should look like this at the end
     ![Alt text](https://s17.postimg.org/saq67aehr/mysql_1.png "Wildcard access to the server")
-6. Exit out from your editor and save
+7. Exit out from your editor and save
 If you are using nano editor then press the following keys from keyboard one line at the time.
 ```
 CTRL + X
@@ -69,7 +79,7 @@ Y
 Enter
 ```
 
-7. Now we have to create a user for our database, to do this we first have to do the following steps
+8. Now we have to create a user for our database, to do this we first have to do the following steps
     ..a. Login to mysql as root
     ```
     mysql -u root -p
@@ -101,7 +111,7 @@ Enter
     sudo service mysql restart
     ```
     
-8. Now we need to make sure if our database setup was successful or not, for this we need to run MySQL Workbench from our host machine (windows) or any other program that allows us to connect to MySQL server.
+9. Now we need to make sure if our database setup was successful or not, for this we need to run MySQL Workbench from our host machine (windows) or any other program that allows us to connect to MySQL server.
     ..a. Now click on the plus sign, in order to add a new server.
     ![Alt text](https://s12.postimg.org/kwnhr4j99/mysql_2.png "Add new server to MySQL workbench")
     ..b. Add a connection name, anything you want.
@@ -117,12 +127,12 @@ Enter
     ![Alt text](https://s16.postimg.org/8qid9l451/mysql_5.png "Add new database")
     ..j. Enter a schema name and let it be 'pt_development' without quotes then press 'Apply' and finally press 'Finish'
     ..k. Now close out MySQL workbench and we are done with setting up our database server and schema.
-9. Now back to vagrant we need to install Node.js to do this head to our vagrant/project folder
+10. Now back to vagrant we need to install Node.js to do this head to our vagrant/project folder
 ```
 cd /vagrant/project
 ```
 
-10. To install vagrant we need to follow these steps
+11. To install vagrant we need to follow these steps
     ..a. Install build-essential and other liabraries
     ```
     sudo apt-get install build-essential libssl-dev curl -y
@@ -152,12 +162,12 @@ cd /vagrant/project
     node -v
     ```
     
-11. Before installing our dependencies we first need to install sequelize-cli
+12. Before installing our dependencies we first need to install sequelize-cli
 ```
 npm install -g sequelize-cli
 ```
 
-12. Now we need to install our dependencies
+13. Now we need to install our dependencies
 ```
 npm install
 ```
@@ -166,17 +176,17 @@ npm install
     npm install --no-bin-links
     ```
 
-13. Now we need to update our database tables, and migrate it with our models
+14. Now we need to update our database tables, and migrate it with our models
 ```
 sequelize db:migrate
 ```
 
-14. Now run the website
+15. Now run the website
 ```
 npm start
 ```
 
-15. Now test the website is working correctly by going to this address 192.168.33.10:8080 from your web browser and you should see the website running.
+16. Now test the website is working correctly by going to this address 192.168.33.10:8080 from your web browser and you should see the website running.
 
 ---
 End with an example of getting some data out of the system or using it for a little demo
