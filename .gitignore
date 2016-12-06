@@ -31,8 +31,13 @@ build/Release
 node_modules
 jspm_packages
 
-#VirtualBox
-.vagrant
+# Vagrant stuff
+acceptance_config.yml
+boxes/*
+/.vagrant
+/website/.vagrant
+/website/build
+/vagrant-spec.config.rb
 
 # Optional npm cache directory
 .npm
