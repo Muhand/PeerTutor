@@ -1,0 +1,203 @@
+    <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {{#if signup_success}}
+                        <div class="alert alert-success fade in" id="signUpResultWell">
+                            <a class="close" data-toggle="collapse" aria-label="close" data-target="#signUpResultWell">&times;</a>
+                            <p id="signUpResultMessage">{{SignUpResultMessage}}</p>
+                        </div>
+                   {{/if}}
+                    {{#if signup_failed}}
+                        <div class="alert alert-danger fade in" id="signUpResultWell">
+                            <a class="close" data-toggle="collapse" aria-label="close" data-target="#signUpResultWell">&times;</a>
+                            <p id="signUpResultMessage">{{SignUpResultMessage}}</p>
+                        </div>
+                   {{/if}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Welcome to PeerTutor</span>
+                        <hr class="star-light">
+                        <span class="skills">Learn - Help - Save Time</span>
+                        <br/>
+                        
+                        <center>
+                            <div class="lsBtnsContainer">
+                                <noscript>
+                                    <button class="lsBtn" style="margin-right:10px;"><a href="login.html">Login</a></button>
+                                
+                                    <button class="lsBtn" style="margin-left:10px;" data-toggle="modal" data-target="#signupModal">Sign Up</button> 
+                                </noscript>
+                                
+                                <button class="lsBtn" style="margin-right:10px;" data-toggle="modal" data-target="#loginModal">Login</button>
+                                
+                                <button class="lsBtn" style="margin-left:10px;" data-toggle="modal" data-target="#signupModal">Sign Up</button>        
+                            </div>
+                        </center>
+                        
+                        
+                        <!-- Modals -->
+                        <!-- Log-in Modal -->
+                        <div class="modal fade" id="loginModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Header -->
+                                    <div class="modal-header modal-header-primary">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h1 style="float:left;"><i class="glyphicon glyphicon-log-in"></i> Login</h1>
+                                    </div>
+                                            
+                                    <!-- Body -->
+                                    <div class="modal-body">
+                                        {{#each error}}
+                                            <div class="alert alert-danger">{{this}}</div>
+                                        {{/each}}
+                                        
+                                        <form role="form" name="login" action="/login" method="post">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Email" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                            </div>
+                                                    
+                                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                                        </form>
+                                    </div>
+                                    
+                                    <!-- Footer -->
+                                    <div class="modal-footer modal-footer-primary">
+                                        <label><a href="/resetpassword">Forgot your password?</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sign-up Modal -->
+                        <div class="modal fade" id="signupModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Header -->
+                                    <div class="modal-header modal-header-primary">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h1 style="float:left;"><i class="glyphicon glyphicon-plus"></i> Sign Up</h1>
+                                    </div>
+                                            
+                                    <!-- Body -->
+                                    <div class="modal-body">
+                                        <div class="collapse" id="signUpWell">
+                                            <div class="alert alert-danger fade in">
+                                                <a href="#" class="close" data-toggle="collapse" aria-label="close" data-target="#signUpWell">&times;</a>
+                                                <p id="signUpMessage"></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <form role="form" name="signup" action="/signup" method="post" onsubmit="return validateSignUpForm()">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="First Name" name="fname">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Last Name" name="lname">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Email" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="Confirm Email" name="cemail">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword">
+                                            </div>
+                                            
+                                             <div class="form-group">
+                                                 <input type="hidden" name="selected_school" value="0">
+                                                 <select onchange="updateSelectedSchool()" class="form-control" name="school">
+                                                     <option value="" disabled selected>Select your School</option>
+                                                     {{#each school}}
+                                                     <option>{{this}}</option>
+                                                     {{/each}}
+                                                 </select>
+                                            </div>
+                                            
+                                             <!--Footer--> 
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                            
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>   
+
+
+<script>
+function validateSignUpForm() {
+    var fname = document.forms["signup"]["fname"].value;
+    var lname = document.forms["signup"]["lname"].value;
+    var pass = document.forms["signup"]["password"].value;
+    var cpass = document.forms["signup"]["cpassword"].value;
+    var email = document.forms["signup"]["email"].value;
+    var cemail = document.forms["signup"]["cemail"].value;
+    var school = document.forms["signup"]["school"];
+    var msg = "";
+    var result = true;
+    
+    if(pass.length < 8 || hasNumbers(pass) == false)
+    {
+        msg = "Password must be longer than 8 characters and must include at least ONE number."
+        result = false;
+    }
+    else if(fname == "" || lname == "" || pass == "" || cpass == "" || email == "" || cemail == "" || school.selectedIndex == 0)
+    {
+        msg = "All fields must have value!";
+        result = false;
+    }
+    else if (pass != cpass) {
+        msg = "Passwords must match!";
+        result = false;
+    }
+    else if (email != cemail) {
+        msg = "Emails must match!";
+        result = false;
+    }
+    
+    if(!result)
+    {
+        $("#signUpWell").collapse('show');
+        document.getElementById("signUpMessage").innerHTML = msg;
+        return false;
+    }
+    
+    $("#signUpWell").collapse('hide');
+    return result;
+}
+function updateSelectedSchool()
+{
+    var selectedSchool = document.forms["signup"]["selected_school"];
+    var school = document.forms["signup"]["school"];
+    
+    selectedSchool.value = school.selectedIndex;
+    
+}
+function hasNumbers(input)
+{
+    var regex = /\d/g;
+    return regex.test(input);
+}
+</script>

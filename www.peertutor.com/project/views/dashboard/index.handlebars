@@ -1,0 +1,179 @@
+{{#each success}}
+  <div class="alert alert-danger">{{this}}</div>
+{{/each}}
+
+<!--
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1">
+        <div class="page-heading selectSubject">
+        
+            <section id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2>Top Tutors This Week</h2>
+                            <hr class="star-primary">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 portfolio-item">
+                            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                                <div class="caption">
+                                    <div class="caption-content">
+                                        <i class="fa fa-search-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img src="img/portfolio/cabin.png" class="img-responsive" alt="">
+                            </a>
+                        </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/cake.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/circus.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                        
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/game.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/safe.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/submarine.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+            
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+-->
+<body style="background-color:#18bc9c; color:white">
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1">
+                <section id="portfolio">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h2>Subjects</h2>
+                                <hr class="star-primary">
+                            </div>
+                        </div>
+                        <div class="row">
+                            {{#each subject}}
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="/subject/{{this.subjectname}}/{{this.id}}" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+<!--                                            <i class="fa fa-search-plus fa-3x"></i>-->
+                                            <i><h3>{{this.subjectname}}</h3></i>
+                                        </div>
+                                    </div>
+                                    <img class="img-responsive" src={{this.imageurl}} alt="" style="width:360px; height:260px;">
+                                </a>
+                            </div>
+                            {{/each}}
+                            
+                            
+<!--
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            <i class="fa fa-search-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <img src="img/portfolio/cake.png" class="img-responsive" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            <i class="fa fa-search-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <img src="img/portfolio/circus.png" class="img-responsive" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            <i class="fa fa-search-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <img src="img/portfolio/game.png" class="img-responsive" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            <i class="fa fa-search-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <img src="img/portfolio/safe.png" class="img-responsive" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-4 portfolio-item">
+                                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            <i class="fa fa-search-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    <img src="img/portfolio/submarine.png" class="img-responsive" alt="">
+                                </a>
+                            </div>
+-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>

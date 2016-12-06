@@ -1,0 +1,41 @@
+{
+  "name": "peertutor",
+  "version": "1.0.0",
+  "description": "The idea for this application came about after noticing that many Hunter College students did not benefit from the tutoring services offered at the school.  Furthermore, through a survey we conducted last semester, we found that some students did not like the current tutoring system because of its inflexibility and lack of accessibility.  Also, since most young adults nowadays are accustomed to having everything available at their fingertips, we thought digitalizing the tutoring service system at the college would allow more students to easily seek and receive the help they need with their course materials.  The idea has a lot of resemblance with the Uber business model except that the tutors, in this case, would be funded by the school’s respective departments.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node_modules/nodemon/bin/nodemon.js -L app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muhand/PeerTutor.git"
+  },
+  "keywords": [
+    "peertutor"
+  ],
+  "author": "Muhand Jumah, Eshawn Karim",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Muhand/PeerTutor/issues"
+  },
+  "homepage": "https://github.com/Muhand/PeerTutor#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.1",
+    "method-override": "^2.3.6",
+    "mocha": "^3.1.2",
+    "mysql": "^2.12.0",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.27.0"
+  }
+}

@@ -1,0 +1,173 @@
+.lsBtnsContainer{
+    padding-top:20px;
+    width:400px;
+}
+.lsBtn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding:5px;
+    width:100px;
+}
+.lsBtn:hover{
+    background-color:white;
+    color:#18BC9C;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-footer-primary{
+	color:#747D9A;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #F2F2F2;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+}
+.modal-footer-primary a, a:hover, a:visited, a:link, a:active, a:link:active, a:visited:active{
+    color:#747D9A;
+    text-decoration: none;
+}
+.modal-footer-primary a:hover{
+    color:#B6BDD6;
+}
+
+.navbar-footer{
+    background: #2C3E50;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+}
+.navbar-footer a:focus {
+  outline: none;
+}
+
+.navbar-footer li a {
+  color: white;
+}
+.navbar-footer li a:hover {
+  color: #18BC9C;
+  outline: none;
+}
+
+.navbar-footer li a:focus,
+.navbar-footer li a:active {
+  color: white;
+}
+.navbar-footer li.active a {
+  color: white;
+  background: #18BC9C;
+}
+.navbar-footer li.active a:hover,
+.navbar-footer li.active a:focus,
+.navbar-footer li.active a:active {
+  color: white;
+  background: #18BC9C;
+}
+.ChatNowBtn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+.ChatNowBtn:hover{
+    background-color:white;
+    color:#18BC9C;
+    cursor: pointer;
+}
+.availableTutorName{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.availableTutorName li a{
+    color: white;
+    text-decoration: none;
+}
+.availableTutorName li a:hover{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.availableTutorName li{
+    float:left;
+}
+
+/*
+.ss{
+    background-color: transparent;
+    color: white;
+    margin:0px;
+    padding:0px; 
+}
+.ss:hover{
+    margin:0px;
+    padding:0px;
+}
+*/
+
+/*
+.navbar-custom .navbar-nav {
+  letter-spacing: 1px;
+}
+.navbar-custom .navbar-nav li a {
+  color: white;
+}
+.navbar-custom .navbar-nav li a:hover {
+  color: #18BC9C;
+  outline: none;
+}
+.navbar-custom .navbar-nav li a:focus,
+.navbar-custom .navbar-nav li a:active {
+  color: white;
+}
+.navbar-custom .navbar-nav li.active a {
+  color: white;
+  background: #18BC9C;
+}
+.navbar-custom .navbar-nav li.active a:hover,
+.navbar-custom .navbar-nav li.active a:focus,
+.navbar-custom .navbar-nav li.active a:active {
+  color: white;
+  background: #18BC9C;
+}
+*/
+
+/*
+.ss,
+.ss:hover,
+.ss:focus,
+.ss:active,
+.ss.active {
+    background-color: transparent;
+    color: white;
+    margin:0px;
+    padding:0px;
+}
+*/
+/*
+.profileList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.profileList li {
+    float:left;
+}*/
