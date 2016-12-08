@@ -1,0 +1,161 @@
+<body style="">
+    <!-- MODALS -->
+    <div class="modal fade" id="updateAboutMeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h1 style="float:left;"><i class="glyphicon glyphicon-edit"></i> AboutMe</h1>
+                </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <form role="form" name="login" action="/profile/updateAboutMe" method="post">
+                        <div class="form-group">
+                         
+                            <textarea class="form-control" name="aboutMe">{{user.aboutMe}}
+                            </textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Update AboutMe Modal -->
+    
+    <!-- END OF MODALS -->
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1">
+                <section id="portfolio">
+                    <div class="container">
+                        
+                        <!-- Profile Picture and Bio -->
+                        <div class="col-lg-3 col-lg-offset-0 col-md-2 col-md-offset-1">
+                            <div class="row">
+                                
+                                <div class="row">
+                                    <div class="profilePictureContainer">
+                                        <img src={{user.profileImage}} />
+                                        <div class="profilePictureOverlay" style="">
+                                            <div>
+                                                <img class="editProfilePictureBtn" src="img/icons/pencil_15x15.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <h5>About Me:</h5>
+                                    <a href="#" data-toggle="modal" data-target="#updateAboutMeModal">
+                                        <div class="aboutMeWrapper">
+                                            <img style="width:25px; height: 25px; margin-left:5px;" src="img/icons/pencil_25x25.png"/>
+
+
+                                            <div class="aboutMeContainer">
+                                                <p>{{user.aboutMe}} </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                            </div>
+                        </div>
+                        
+                        <!-- User Profile -->
+                        <div class="col-lg-6 col-lg-offset-0 col-md-8 col-md-offset-1">
+                            <div class="row">
+                                <div class="profileInfo" style="padding: 25px;">
+                                    <h4>Profile Information</h4>
+                                    <hr />
+                                    
+                                    <!-- In case of Error -->
+                                    {{#each error}}
+                                    <div class="alert alert-danger"><strong>{{this}}</strong></div>{{/each}}
+                                    
+                                    <!-- In case of success -->
+                                    {{#if success}}
+                                    <div class="alert alert-success alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Your information have been updated<br/>If you changed your email then you will be automatically logged out as soon as you navigate to another page.</strong>
+                                    </div>
+                                    {{/if}}
+                                    
+                                    <!-- Body -->
+                                    <form role="form" name="updateProfile" action="/profile/updateProfile" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name" name="fname" value="{{user.firstname}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name" name="lname" value="{{user.lastname}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email" name="email" value="{{user.email}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Confirm Email" name="cemail">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password" name="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword">
+                                        </div>
+                                            
+                                        <div class="form-group">
+
+                                            <input type="hidden" name="selected_school" value="0">
+                                            <select onchange="updateSelectedSchool()" class="form-control" name="school">
+                                                <option value="" disabled selected>Select your School</option>
+                                                {{#each school}}
+                                                <option>{{this}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Favorite Tutors -->
+                        <div class="col-lg-3 col-lg-offset-0 col-md-8 col-md-offset-1">
+                            <div class="row">
+                                <div style="padding: 25px;">
+                                    <h4>Favorite Tutors</h4>
+                                    <hr />
+                                    
+                                    {{#each favtutor}}
+                                    <div class="col-sm-4 portfolio-item">
+                                        <div class="favTutorPictureContainer">
+                                            <img class="img-responsive img-circle" src={{this}} alt="{{favtutor.name}}">
+                                            <div class="favTutorOverlay"></div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateSelectedSchool()
+        {
+            var selectedSchool = document.forms["updateProfile"]["selected_school"];
+            var school = document.forms["updateProfile"]["school"];
+    
+            selectedSchool.value = school.selectedIndex;
+        }
+    </script>
+
+</body>

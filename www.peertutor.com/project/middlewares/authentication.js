@@ -32,8 +32,22 @@ passport.serializeUser((user, done) => {
   done(null, user.email);
 });
 
+//passport.deserializeUser((id, done) => {
+//  User.findById(email).then((user) => {
+//    if (user == null) {
+//      return done(null, false);
+//    }
+//
+//    return done(null, user);
+//  });
+//});
+
 passport.deserializeUser((email, done) => {
-  User.findById(email).then((user) => {
+  User.findOne({
+      where: {
+          email: email
+      }
+  }).then((user) => {
     if (user == null) {
       return done(null, false);
     }
