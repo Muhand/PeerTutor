@@ -32,18 +32,16 @@ module.exports = function(sequelize, DataTypes) {
     },
     aboutMe: {
         type: Sequelize.TEXT
+    },
+    isTutor:{
+        type: Sequelize.BOOLEAN
     }
   }, {
-//    classMethods: {
-//      associate: function(models) {
-//        // associations can be defined here
-//      }
-//    },
-//      hooks: {
-//          beforeUpdate: function() {
-//              console.log("UPDATED");
-//          }
-//      }
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    },
   });
     
     User.beforeCreate((user) =>

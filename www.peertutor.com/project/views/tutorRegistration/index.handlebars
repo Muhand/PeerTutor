@@ -1,0 +1,76 @@
+<body style="">    
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-1">
+                <section id="tutorAgreement">
+                    <div class="container">
+                        <div class="col-lg-1">
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row">
+                                <div class="collapse" id="agreementWell">
+                                    <div class="alert alert-danger fade in">
+                                        <a href="#" class="close" data-toggle="collapse" aria-label="close" data-target="#agreementWell">&times;</a>
+                                        <p id="agreementMessage"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Agreement -->
+                            <div class="row">
+                                <div class="agreementContainer" style="width:100%; max-width:100%; outline: 1px solid black;; padding:30px; padding-top:10px;">
+                                    <center>
+                                        <h3>Thank you for taking the time to be part of our team</h3>
+                                        <hr />
+                                    </center>
+
+                                    <p style="margin-top:60px;">
+                                        test adkfj alkdsf lajkdshflk ajsdf ajsdhfl kashdfjk halsdj hfaljsdkh flajksdhf ljkashd fjkahsdl jkfhasljkdfh alkjsdhf alkjsdhfkjashdlfjhadlk jfh
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Buttons -->
+                            <div class="row">
+
+                                <input type="checkbox" name="agreementCheckbox" value="agree" id="agreementCheckbox"> I have <span style="font-weight:bold; color:red;">read</span> and <span style="font-weight:bold; color:red;">understand</span> the above terms and conditions.
+
+                                <center>
+                                    <button type="buton" class="btn btn-primary" onclick="validateAgreement()">Agree</button>
+                                    <button type="button" class="btn btn-primary">Disagree</button>
+                                </center> 
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-1">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validateAgreement() 
+        {
+            var agreementcheckbox = document.getElementById("agreementCheckbox");
+            var msg = "";
+            var result = true;
+            
+            if(agreementcheckbox.checked == false){
+                msg = "You must agree to the terms and conditions before continuing.";
+                result = false;
+            }
+            
+            if(!result)
+            {
+                $("#agreementWell").collapse('show');
+                document.getElementById("agreementMessage").innerHTML = msg;
+                return false;
+            }
+    
+            $("#agreementWell").collapse('hide');
+            window.location = "/tutorRegistration/profileSignUp";
+            return result;
+        }
+    </script>
+</body>

@@ -58,6 +58,11 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'img/profile.png'
       },
+        isTutor:{
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+            defaultValue: 0
+        },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

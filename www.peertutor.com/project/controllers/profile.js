@@ -1,11 +1,14 @@
 const express = require('express');
 const Redirect = require('../middlewares/redirect');
 const models = require('../models');
+const passport = require('../middlewares/authentication');
 
 var errors = [];
 var schools = [];
 var favTutors = [];
-var containsNumbersRegex = new RegExp(/\d/g);;
+var containsNumbersRegex = new RegExp(/\d/g);
+ var aboutMeEmpty;
+
 module.exports = {
   registerRouter() {
     const router = express.Router();
@@ -20,6 +23,7 @@ module.exports = {
       errors = [];
       schools = [];
       favTutors = [];
+     
       
       favTutors.push("img/portfolio/cabin.png");
       favTutors.push("img/profile.png");
@@ -33,12 +37,20 @@ module.exports = {
           });
       
       });
+      if(res.locals.cur_user.aboutMe === "")
+          aboutMeEmpty = true;
+      else
+          aboutMeEmpty = false;
+          
+      console.log(aboutMeEmpty);
       
       res.render('profile', {
           user: req.user, 
           school: schools,
-          favtutor: favTutors
-      }); 
+          favtutor: favTutors,
+          aboutMeEmpty: aboutMeEmpty
+      });
+      
   },
   updateProfile(req, res){ 
       errors = [];
@@ -49,6 +61,7 @@ module.exports = {
       var password = req.body.password;
       var cpassword = req.body.cpassword;
       var school = req.body.selected_school;
+      var aboutMe = req.body.aboutMe;
       
       if(email !== cemail)
           errors.push('Make sure emails match.');
@@ -56,7 +69,7 @@ module.exports = {
           errors.push('Make sure passwords match.');
       if(password.length < 8 || containsNumbersRegex.test(password) == false)
           errors.push('Password must be longer than 8 characters and must include at least ONE number.');
-      if(fname === "" || lname === "" || email === "" || cemail === "" || password === "" || cpassword === "" || school === "Select your School")
+      if(fname === "" || lname === "" || email === "" || cemail === "" || school === "Select your School")
           errors.push('All fields must have value!');
       
       
@@ -67,7 +80,8 @@ module.exports = {
               lastname: lname,
               email: email,
               password: password,
-              school: school
+              school: school,
+              aboutMe: aboutMe
           }, {
               where:{
                   id: req.user.id,
@@ -75,25 +89,43 @@ module.exports = {
                   school: req.user.school
               } 
           }).then((user) => {
-              res.render('profile',{
+              if(res.locals.cur_user.aboutMe === "")
+                  aboutMeEmpty = true;
+              else
+                  aboutMeEmpty = false;
+              
+              passport.authenticate('local')(req, res);
+              
+                  res.render('profile',{
                   user: user,
                   error: errors,
                   school: schools,
                   favtutor: favTutors,
-                  success: true
+                  success: true,
+                  aboutMeEmpty: aboutMeEmpty
               }); 
+              
           }).catch(() => {
-              res.render('profile',{
+                  errors.push('This email is already taken.');
+                  res.render('profile',{
+                      user: req.user,
+                      error: errors,
+                      school: schools,
+                      favtutor: favTutors,
+                      success: false,
+                      aboutMeEmpty: aboutMeEmpty
+                  });
+              });
+      }
+      else{
+          res.render('profile',{
                   user: req.user,
                   error: errors,
                   school: schools,
                   favtutor: favTutors,
-                  success: false
+                  success: false,
+              aboutMeEmpty: aboutMeEmpty
               });
-          });
-      }
-      else{
-          
       }
       
   },
@@ -111,7 +143,8 @@ module.exports = {
               error: errors,
               school: schools,
               favtutor: favTutors,
-              success: true
+              success: true,
+              aboutMeEmpty: aboutMeEmpty
           });
       });
       

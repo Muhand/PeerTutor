@@ -108,6 +108,14 @@
 .availableTutorName li{
     float:left;
 }
+.aboutMeContainer{
+      position: relative;
+    display: inline-block;
+/*
+    background-color: rgba(0, 0, 0, 0.2);
+    outline: 1px solid black;
+*/
+}
 .aboutMeWrapper img{
     opacity: 0;
     -webkit-transition: opacity 0.5s ease-out;
@@ -116,7 +124,7 @@
     transition: opacity 0.5s ease-out;
 }
 .aboutMeWrapper:hover img{
-    opacity: 1;
+/*    opacity: 1;*/
 }
 .aboutMeWrapper:hover .aboutMeContainer{
     background-color: rgba(139, 218, 255, 0.6);
