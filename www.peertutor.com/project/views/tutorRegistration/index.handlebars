@@ -6,6 +6,7 @@
                     <div class="container">
                         <div class="col-lg-1">
                         </div>
+                        
                         <div class="col-lg-10">
                             <div class="row">
                                 <div class="collapse" id="agreementWell">
@@ -15,6 +16,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <!-- Agreement -->
                             <div class="row">
                                 <div class="agreementContainer" style="width:100%; max-width:100%; outline: 1px solid black;; padding:30px; padding-top:10px;">
@@ -32,14 +34,14 @@
                             
                             <!-- Buttons -->
                             <div class="row">
+                                <form role="form" method="post" action="profileSignUp" onsubmit="return validateAgreement()">
+                                    <input type="checkbox" name="agreementCheckbox" value="agree" id="agreementCheckbox"> I have <span style="font-weight:bold; color:red;">read</span> and <span style="font-weight:bold; color:red;">understand</span> the above terms and conditions.
 
-                                <input type="checkbox" name="agreementCheckbox" value="agree" id="agreementCheckbox"> I have <span style="font-weight:bold; color:red;">read</span> and <span style="font-weight:bold; color:red;">understand</span> the above terms and conditions.
-
-                                <center>
-                                    <button type="buton" class="btn btn-primary" onclick="validateAgreement()">Agree</button>
-                                    <button type="button" class="btn btn-primary">Disagree</button>
-                                </center> 
-                                
+                                    <center>
+                                        <button type="buton" class="btn btn-primary">Agree</button>
+                                        <button type="button" class="btn btn-primary" onclick="disagree()">Disagree</button>
+                                    </center> 
+                                </form>
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -69,8 +71,12 @@
             }
     
             $("#agreementWell").collapse('hide');
-            window.location = "/tutorRegistration/profileSignUp";
+//            window.location = "/tutorRegistration/profileSignUp";
             return result;
+        }
+        function disagree() 
+        {
+            window.location = "/dashboard";
         }
     </script>
 </body>
