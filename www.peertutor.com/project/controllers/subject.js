@@ -16,10 +16,10 @@ module.exports = {
     subject(req, res) {
         console.log(req.params.subjectname);
         console.log(req.params.subjectid);
+        
+//        http://192.168.33.10:8080/subject/English/2/schools/csi/
       res.render('subject', {
-          user: req.user,
-          subject: req.subject,
-          school: req.school,
+          contentURL: 'schools/csi/tutoringCenterRules/index.pdf',
           success: req.flash('success'),
       });
   },

@@ -2,7 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var schools = sequelize.define('schools', {
     schoolname: DataTypes.STRING,
-    contactEmail: DataTypes.STRING
+    contactEmail: DataTypes.STRING,
+    contentURL: DataTypes.STRING,        
   }, {
     classMethods: {
       associate: function(models) {
