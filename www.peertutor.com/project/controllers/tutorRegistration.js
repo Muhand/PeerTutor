@@ -39,7 +39,17 @@ module.exports = {
       dobd = req.body.dobd;
       doby = req.body.doby;
       var dob = dobm + '/' + dobd + '/'+ doby;
-      
+      var ssn = req.body.ssn;
+      var cgrade = req.body.cgrade;
+      var empid = req.body.empid;
+      var ts = req.body.teachSubjectList;
+      var cer = req.body.iscertified;
+      var pw = req.body.password;
+      var iscer;
+      if(cer == "Yes")
+          iscer = true;
+      else
+          iscer = false;
       //Validate form
       if(isNaN(dobm) || isNaN(dobd) || isNaN(doby)){
           errors.push("Please indicate a valid date of birth.");
@@ -51,7 +61,29 @@ module.exports = {
               error: errors
           });
       } else {
-        res.send(dob);
+          models.tutors.create({
+              userid: res.locals.cur_user.id,
+              dob: dob,
+              ssn: ssn,
+              collegegrade: cgrade,
+              emplid: empid,
+              certifiedtutor: iscer
+          }).then((user) => {
+              req.user.update({
+                  password: pw,
+                  isTutor: true
+              }, {
+                  where:{
+                      id: req.user.id,
+                      email: req.user.email,
+                      school: req.user.school
+                  }
+              });
+              res.render('tutor/dashboard', {signup_success: true, SignUpResultMessage: "Your registration was successful!"});
+          }).catch(() => {
+              //res.render('sign-up');
+              res.render('tutorRegistration/profileSignUp', {signup_failed: true, SignUpResultMessage: "Error, this EMPLID already exists."});
+          });
       }
   },
   error(req, res){

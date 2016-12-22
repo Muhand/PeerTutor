@@ -25,6 +25,8 @@
                                     <form role="form" method="post" action="profileSignUp/register" name="signuptutor" onsubmit="return validateSignUpForm()">
                                   
                                         <!-- Body -->
+                                        
+                                        <!-- DOB -->
                                         <div class="form-group tutorSignUpFC">
                                             <label class="control-label">Date of birth<span style="color:red;">*</span> </label>
                                             
@@ -61,15 +63,18 @@
                                             </div>
                                         </div>
                                         
+                                        <!-- SSN -->
                                         <div class="form-group tutorSignUpFC" style="">
                                             <label class="control-label">SSN<span style="color:red;">*</span> </label>
-                                            <input type="number" class="form-control" placeholder="Social Security Number" name="cemail">
+                                            <input type="number" class="form-control" placeholder="Social Security Number" name="ssn">
                                         </div>
                                         
+                                        <!-- College Frade -->
                                         <div class="form-group tutorSignUpFC">
                                             <label class="control-label">College Grade<span style="color:red;">*</span> </label>
                                             
-                                            <select type="text" class="form-control" id="field-year" required>
+                                            <input type="hidden" name="cgrade" value="Freshman">
+                                            <select onchange="updateSelectedcGrade()" type="text" name="grades" class="form-control" id="field-year" required>
                                                 <option>Freshman</option>
                                                 <option>Sophomore</option>
                                                 <option>Junior</option>
@@ -78,14 +83,19 @@
                                                 <option>Graduate</option>
                                             </select>
                                         </div>
+                                        
+                                        <!-- EMPLID -->
                                         <div class="form-group tutorSignUpFC">
                                             <label class="control-label">EMPLID<span style="color:red;">*</span> </label>
-                                            <input type="number" class="form-control" placeholder="College EMPLID" name="cemail">
+                                            <input type="number" class="form-control" placeholder="College EMPLID" name="empid">
                                         </div>
+                                        
+                                        <!-- Subjects -->
                                         <div class="form-group tutorSignUpFC">
                                             <label class="control-label">Subjects You Tutor?<span style="color:red;">*</span> </label>
                                             
                                             <div class="teachSubject">
+                                                <input type="hidden" name="teachSubjectList" value="">
                                                 <div id="teachSubject">
                                                 </div>
                                             </div>
@@ -112,12 +122,19 @@
                                             </div>
                                         </div>
                                         
+                                        <!-- Current Password -->
+                                        <div class="form-group">
+                                            <label class="control-label">Confirm Current Password (Please re-type or account will be locked)<span style="color:red;">*</span> </label>
+                                            <input type="password" class="form-control" placeholder="Password" name="password">
+                                        </div>
+                                        
+                                        <!-- Certified Tutor-->
                                         <div class="form-group tutorSignUpFC">
                                             <label class="control-label">Certified Tutor?<span style="color:red;">*</span> </label>
-                                            
+                                            <input type="hidden" name="iscertified" value="">
                                             <br>
-                                            <input type="radio" name="certifiedtutor"> Yes I am a certified tutor by my college.<br>
-                                            <input type="radio" name="certifiedtutor"> No I am not a certified tutor by my college.
+                                            <input type="radio" name="certifiedtutor" id="certified"> Yes I am a certified tutor by my college.<br>
+                                            <input type="radio" name="certifiedtutor" id="notcertified"> No I am not a certified tutor by my college.
                                           
                                         </div>
                                         
@@ -135,7 +152,9 @@
         </div>
     </div>
     <script>
+        
         var id = 0;
+        var subjectsAdded = 0;
         function addSubjectToTeach(name) 
         {
             var subjectsContainer = document.getElementById("teachSubject");
@@ -144,6 +163,7 @@
             var newSubjectWell = document.createElement("div");
             var newSubjectName = document.createElement("p");
             var newSubjectCloseBtn = document.createElement("a");
+            var newSubjectList = document.forms["signuptutor"]["teachSubjectList"];
             
             //Properties
             newSubjectParent.setAttribute('id', id);
@@ -151,7 +171,7 @@
             newSubjectCloseBtn.className = "close";
             newSubjectCloseBtn.setAttribute('aria-label', "close");
             newSubjectCloseBtn.onclick = function() {
-                removeSubjectToTeach(newSubjectParent);
+                removeSubjectToTeach(newSubjectParent, name);
             }
             newSubjectCloseBtn.innerHTML = "&times;"
             
@@ -163,12 +183,45 @@
             newSubjectWell.appendChild(newSubjectCloseBtn); 
             newSubjectWell.appendChild(newSubjectName);  
             
+            //Add subject name to the list
+            if(subjectsAdded == 0){
+                newSubjectList.value = name;
+            } else {
+                newSubjectList.value += ","+name;
+            }
+            
             id++;
+            subjectsAdded++;
         }
-        function removeSubjectToTeach(subjectDivToRemove) 
+        function removeSubjectToTeach(subjectDivToRemove, name) 
         {
             var parent = document.getElementById('teachSubject');
+            var newSubjectList = document.forms["signuptutor"]["teachSubjectList"];
+            
             parent.removeChild(subjectDivToRemove);
+            
+            if(subjectsAdded == 1){
+                newSubjectList.value = "";
+            } else if (subjectsAdded > 1) {
+                var cnt = 0;
+                
+                while(cnt < newSubjectList.value.length){
+                
+                    if(newSubjectList.value[cnt] == ","){
+                        cnt++;
+                    } else {
+                        if(newSubjectList.value.substring(cnt, cnt+name.length) == name){
+                            var firstpart = newSubjectList.value.substring(0, cnt);
+                            var secondpart = newSubjectList.value.substring(cnt+name.length, newSubjectList.value.length);
+                            
+                            newSubjectList.value = firstpart+secondpart;
+                        }
+                        cnt++;
+                    }
+                }
+            } 
+            
+            subjectsAdded--;
         }
         function updateSelectedDOBD()
         {
@@ -191,10 +244,18 @@
     
             selectedDOBD.value = years[years.selectedIndex].value;
         }
+        function updateSelectedcGrade()
+        {
+            var selectedCGrade = document.forms["signuptutor"]["cgrade"];
+            var grades = document.forms["signuptutor"]["grades"];
+            
+            selectedCGrade.value = grades[grades.selectedIndex].value;
+        }
         function validateSignUpForm() {
             var dobd = document.forms["signuptutor"]["dobd"].value;
             var dobm = document.forms["signuptutor"]["dobm"].value;
             var doby = document.forms["signuptutor"]["doby"].value;
+            var cer = document.forms["signuptutor"]["iscertified"];
             var msg = "";
             var result = true;
     
@@ -211,6 +272,15 @@
             }
     
             $("#signUpWell").collapse('hide');
+            if(result == true){
+                alert("Yes");
+                if(document.getElementById('certified').checked == true) {
+                    cer.value = "Yes"
+                }else if(document.getElementById('notcertified').checked == true) {
+                    cer.value = "No";
+                }
+            }
+            alert(cer.value);
             return result;
         }
     </script>
